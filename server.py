@@ -18,8 +18,9 @@ AWESOMENESS = [
 def start_here():
     """Home page."""
 
-    return""" "<!doctype html><html>Hi! This is the home page.</html>"    
-    <a href="/hello"> Click me to go to the Main page. </a> """ #I added this line as "Make the /hello Route Easier to Access"
+    return""" "<!doctype html><html>Hi! This is the home page.</html>"<p>  
+    <a href="/hello"> Click me to go to Complimentes Main page.</a></p> <p>
+    <a href="/insult"> Or click me to go to Insults Main page.</a> </p> """#I added this line as "Make the /hello Route Easier to Access"
 
 @app.route('/hello')
 def say_hello():
@@ -33,11 +34,9 @@ def say_hello():
       </head>
       <body>        
         <h1>Hi There!</h1>  
-
         <form action="/greet">
           What's your name? <input type="text" name="person">
           <input type="submit" value="Submit">
-
           <p>
           <label for="select-complimet">Choose one compliment</label>          
           <select name="compliment" id="select-compliment">
@@ -47,21 +46,6 @@ def say_hello():
             <option value="sweet">Sweet</option>
           </p>  
           </select> 
-        </form>
-
-        <form action="/diss">
-          What's your name? <input type="text" name="person">
-          <input type="submit" value="Submit">  
-
-          <p>
-          <label for="select-insult">Choose one insult</label>
-          <select name="insult" id="select-insult">
-            <option value="nuts">Nuts</option>
-            <option value="crazy">Crazy</option>
-            <option value="idiot">Idiot</option>
-            <option value="mad">Mad</option> 
-          </p>
-          </select>  
         </form>
       </body>
     </html>
@@ -86,6 +70,38 @@ def greet_person():
       </head>
       <body>
         Hi, {player}! I think you're {compliment}!
+        <p><a href="/">Click me to go to Home page</a></p>
+      </body>
+    </html>
+    """
+
+# this code down for insult page
+
+@app.route('/insult')
+def say_hello_insult():
+    """Say hello and prompt for user's name."""
+
+    return """
+    <!doctype html>
+    <html>
+      <head>
+        <title>Hi There!</title>
+      </head>
+      <body>        
+        <h1>Hi There!</h1>  
+        <form action="/diss">
+          What's your name? <input type="text" name="person">
+          <input type="submit" value="Submit">
+          <p>
+          <label for="select-insult">Choose one insult</label>
+          <select name="insult" id="select-insult">
+            <option value="nuts">Nuts</option>
+            <option value="crazy">Crazy</option>
+            <option value="idiot">Idiot</option>
+            <option value="mad">Mad</option> 
+          </p>
+          </select>  
+        </form>
       </body>
     </html>
     """
@@ -101,15 +117,14 @@ def insults_person():
     <!doctype html>
     <html>
       <head>
-        <title>A Insultt</title>
+        <title>A Insult</title>
       </head>
       <body>
         Hi, {player}! I think you're {insult}!
+        <p><a href="/">Click me to go to Home page</a></p>
       </body>
     </html>
     """
-
-
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads"
